@@ -44,7 +44,7 @@ def get_liga_games
 			next if td[2].nil?
 			span = td[2].at("span.clube1 a")
 			next if span.nil?
-			events << "#{td[0].inner_html}" if span.inner_html.index("Sporting") && td[0].inner_html.length > 0
+			events << "#{td[0].inner_html}" if span.inner_html.index("Sporting") && td[0].inner_html.length > 1
 		end
 	end
 	events
@@ -53,6 +53,7 @@ end
 evs = get_uefa_games << get_liga_games
 
 evs.each do |ev|
-	puts Date.strptime(ev, "%d %m")
+	#puts Date.strptime(ev, "%d %m")
+	puts ev
 end
 
