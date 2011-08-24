@@ -1,4 +1,4 @@
-require '../lib/scp_homey/scrapper.rb'
+require '../lib/scp_homey.rb'
 
 scp = SCPHomey::Scrapper.new()
 scp.run

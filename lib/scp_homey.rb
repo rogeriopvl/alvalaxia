@@ -1,4 +1,8 @@
-module SCPHome
+module SCPHomey
   VERSION = '0.1'
-  autoload :Runner, 'scp_homey/runner'
+
+  puts File.dirname(__FILE__)+'/scp_homey/game'
+  autoload :Runner, File.dirname(__FILE__)+'/scp_homey/runner'
+  autoload :Scrapper, File.dirname(__FILE__)+'/scp_homey/scrapper'
+  autoload :Game, File.dirname(__FILE__)+'/scp_homey/game'
 end

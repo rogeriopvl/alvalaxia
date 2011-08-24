@@ -6,20 +6,26 @@ module SCPHomey
   
   class Scrapper
 
-    # PT_LEAGUE_URL = 'http://desporto.sapo.pt/futebol/primeira_liga/calendario/156'
-    PT_LEAGUE_URL = 'http://www.sporting.pt/Futebol/Fut_Prof/Liga/futsen_liga_calendario.asp' #get all classes Calendario_Item3
-    # EUROPE_LEAGUE_URL = 'http://www.sporting.pt/Futebol/Fut_Prof/Liga_Europa/futsen_ligaeuropa_calendario.asp' #same class
-    EUROPE_LEAGUE_URL = ''
+    # page that lists the next SCP games
+    NEXT_GAMES_URL = 'http://www.zerozero.pt/equipa.php?grp=0&ond=c&compet_id_jogos=0&epoca_id=141&id=16&menu=nextmatches&type=season'
 
     def initialize
-      puts "TODO"
+      @games = Array.new
     end
 
     def run
-      doc = Nokogiri::HTML(open(PT_LEAGUE_URL))
-      doc.css('tr.Calendario_Item3').each do |item|
-        puts item.text
+      tds = Array.new
+      doc = Nokogiri::HTML(open(NEXT_GAMES_URL))
+      doc.css('table.statsn tr').each do |item|
+        item.css('td').each do |td|
+          tds << td.text
+        end
+        if tds.length > 0
+          game = SCPHomey::Game.new(tds[0], tds[5], tds[6])
+          @games << game
+        end
       end
+      puts @games.inspect
     end
 
   end 
