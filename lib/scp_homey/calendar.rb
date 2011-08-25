@@ -1,16 +1,16 @@
-module SCPHomey
+require 'base64'
+require 'yaml'
 
+module SCPHomey
+  
   # Gcal4Ruby wrapper class
   class Calendar
 
-    # I should find a way to hide this.... -_-
-    GOOGLE_EMAIL = 'scp.homey@gmail.com'
-    GOOGLE_PASSWORD = 'youreallywannaholdme?showmehomey!'
-
     def initialize
+      config = read_config
       @service = GCal4Ruby::Service.new
-      @service.authenticate(GOOGLE_EMAIL, GOOGLE_PASSWORD)
-      @calendar = GCal4Ruby::Calendar.find(@service, {:id => GOOGLE_EMAIL})
+      @service.authenticate(config['credentials']['email'], config['credentials']['password'])
+      @calendar = GCal4Ruby::Calendar.find(@service, {:id => config['credentials']['email']})
     end
 
     def create_event(start_date)
@@ -30,6 +30,16 @@ module SCPHomey
       current_events.each do |ev|
         ev.delete
       end
+    end
+
+    private
+
+    # Reads the configuration file containing the google account
+    # (spare me the insecure bullshit, you should
+    # not be using your own google account/calendar.
+    # Just create a new one to use with this gem)
+    def read_config
+      YAML.load_file(File.expand_path('~/.scphomeyrc'))
     end
 
   end
