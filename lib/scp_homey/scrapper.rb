@@ -17,7 +17,7 @@ module SCPHomey
       @games = Array.new
     end
 
-    def run
+    def fetch
       doc = Nokogiri::HTML(open(NEXT_GAMES_URL, 'User-Agent' => USER_AGENT))
       doc.css('table.statsn tr').each do |item|
         tds = Array.new

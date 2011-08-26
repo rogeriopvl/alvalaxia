@@ -1,5 +1,5 @@
 require 'rake/clean'
-require 'rubygems/specification'
+require 'rubygems'
 
 task :default => :package
 

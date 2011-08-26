@@ -2,8 +2,7 @@ require '../lib/scp_homey.rb'
 require 'rubygems'
 require 'gcal4ruby'
 
-scp = SCPHomey::Scrapper.new
-games = scp.run
+games = SCPHomey::Scrapper.new.fetch
 
 begin
   cal = SCPHomey::Calendar.new
