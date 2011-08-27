@@ -9,6 +9,9 @@ Gem::Specification.new do |s|
   s.email = 'rogeriopvl@gmail.com'
   s.homepage = ''
   s.has_rdoc = false
+  s.add_dependency('gcal4ruby', '0.5.5')
+  s.add_dependency('cmdparse', '2.0.3')
+  s.add_dependency('nokogiri', '1.5.0')
   s.files = %w[
     LICENSE
     README.md

@@ -1,4 +1,5 @@
 require 'base64'
+require 'gcal4ruby'
 
 module SCPHomey
   
