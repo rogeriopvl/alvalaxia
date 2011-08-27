@@ -2,7 +2,7 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
-module SCPHomey
+module Alvalaxia
   
   # Exception to raise when an error occurs scrapping the site
   class UnableToParseDataError < Exception; end
@@ -26,7 +26,7 @@ module SCPHomey
         end
         unless tds.empty?
           # index 0 contains date, 5 the opponent and 6 the competition
-          game = SCPHomey::Game.new(tds[0], tds[5], tds[6])
+          game = Alvalaxia::Game.new(tds[0], tds[5], tds[6])
           @games << game
         end
       end

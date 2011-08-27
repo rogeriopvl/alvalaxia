@@ -2,15 +2,15 @@ require 'cmdparse'
 require 'fileutils'
 require 'yaml'
 
-module SCPHomey
+module Alvalaxia
   
   class Runner
 
-    CONFIG_FILE = File.expand_path('~/.scphomeyrc')
+    CONFIG_FILE = File.expand_path('~/.alvalaxiarc')
 
     def initialize
       @cmd = CmdParse::CommandParser.new(true, true)
-      @cmd.program_name = 'scp_homey'
+      @cmd.program_name = 'alvalaxia'
       @cmd.program_version = VERSION
 
       generate_commands
@@ -27,15 +27,15 @@ module SCPHomey
       # creating the setup command
       setup = CmdParse::Command.new('setup', false)
       setup.short_desc = 'Creates the config file needed to place the events in a google calendar.'
-      setup.description = 'This command creates the ~/.scphomeyrc file with empty credentials. '
+      setup.description = 'This command creates the ~/.alvalaxiarc file with empty credentials. '
       setup.description << 'User needs to fill in the google calendar credentials.'
 
       setup.set_execution_block do |args|
         if has_config_file?
-          puts 'The config file already exists. If you need to change it, edit it ( ~/.scphomeyrc )'
+          puts 'The config file already exists. If you need to change it, edit it ( ~/.alvalaxiarc )'
         else
           create_config_file
-          puts 'Config file created at ~/.scphomeyrc, edit it with your credentials.'
+          puts 'Config file created at ~/.alvalaxiarc, edit it with your credentials.'
         end
       end
 
@@ -62,12 +62,12 @@ module SCPHomey
 
     def main
       puts 'Fetching SCP games calendar...'
-      games = SCPHomey::Scrapper.new.fetch
+      games = Alvalaxia::Scrapper.new.fetch
 
       # this should not be here... but its late, and I'm lazy :P
       puts 'Saving games in Google Calendar...'
       begin
-        cal = SCPHomey::Calendar.new
+        cal = Alvalaxia::Calendar.new
         cal.delete_all_events
 
         games.each do |game|

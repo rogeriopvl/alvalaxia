@@ -1,7 +1,7 @@
 require 'base64'
 require 'gcal4ruby'
 
-module SCPHomey
+module Alvalaxia
   
   # Gcal4Ruby wrapper class
   class Calendar
@@ -39,7 +39,7 @@ module SCPHomey
     # not be using your own google account/calendar.
     # Just create a new one to use with this gem)
     def read_config
-      YAML.load_file(File.expand_path('~/.scphomeyrc'))
+      YAML.load_file(File.expand_path('~/.alvalaxiarc'))
     end
 
   end

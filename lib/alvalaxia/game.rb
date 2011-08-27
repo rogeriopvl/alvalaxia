@@ -1,6 +1,6 @@
 require 'time'
 
-module SCPHomey
+module Alvalaxia
 
   # Contains needed info of a game
   class Game

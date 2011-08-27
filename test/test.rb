@@ -1,11 +1,11 @@
-require '../lib/scp_homey.rb'
+require '../lib/alvalaxia.rb'
 require 'rubygems'
 require 'gcal4ruby'
 
-games = SCPHomey::Scrapper.new.fetch
+games = Alvalaxia::Scrapper.new.fetch
 
 begin
-  cal = SCPHomey::Calendar.new
+  cal = Alvalaxia::Calendar.new
   cal.delete_all_events
 
   games.each do |game|
