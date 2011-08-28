@@ -30,7 +30,7 @@ module Alvalaxia
       setup.description = 'This command creates the ~/.alvalaxiarc file with empty credentials. '
       setup.description << 'User needs to fill in the google calendar credentials.'
 
-      setup.set_execution_block do |args|
+      setup.set_execution_block do
         if has_config_file?
           puts 'The config file already exists. If you need to change it, edit it ( ~/.alvalaxiarc )'
         else
@@ -44,7 +44,7 @@ module Alvalaxia
       run.short_desc = 'Runs the program.'
       run.description = 'Gets the SCP home games and places them as events on a given google calendar.'
       
-      run.set_execution_block do |args|
+      run.set_execution_block do
         if has_config_file?
           main
         else
@@ -55,7 +55,7 @@ module Alvalaxia
       @cmd.add_command(setup)
       @cmd.add_command(run)
       @cmd.add_command(CmdParse::HelpCommand.new, true)
-      @cmd.add_command(CmdParse::VersionCommand.new, true)
+      @cmd.add_command(CmdParse::VersionCommand.new, false)
     end
 
     private
