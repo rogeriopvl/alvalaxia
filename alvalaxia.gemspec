@@ -3,7 +3,8 @@ require 'lib/alvalaxia'
 Gem::Specification.new do |s|
   s.name = 'alvalaxia'
   s.version = Alvalaxia::VERSION
-  s.summary = "Fetches all Sporting Clube de Portugal football games and warns you about those that are played at home."
+  s.summary = "Fetches all Sporting Clube de Portugal football home games and adds them as events to a Google Calendar. "
+  s.summary << "This is useful for (mainly portuguese) people that park their car daily on the SCP stadium park."
   s.date = '2011-08-23'
   s.authors = 'Rogério Vicente'
   s.email = 'rogeriopvl@gmail.com'
