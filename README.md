@@ -2,7 +2,7 @@
 
 ## Info
 
-Alvalaxia is a tool package in a rubygem that you can use to get the next Sporting Club Portugal home games. This is useful for people that park their car in the club's stadium park. The games are saved as events in a given Google Calendar with a notification 24 hours before.
+Alvalaxia is a tool package in a rubygem that you can use to get the next Sporting Club Portugal home games. This is useful for people that park their car in the club's stadium parking lot. The games are saved as events in a given Google Calendar with a notification 24 hours before.
 
 **Important: Don't use your own Google Account for this tool.** You should create a new account just for it.
 
